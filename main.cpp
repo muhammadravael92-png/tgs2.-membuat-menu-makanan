@@ -1,52 +1,35 @@
 #include <iostream>
-#include <iomanip>
-
 using namespace std;
 
 int main() {
-    int pilihan, jumlah, total = 0, bayar, kembalian;
-    char lanjut;
-
-    cout << "=================================\n";
-    cout << "      PROGRAM MINI KASIR         \n";
-    cout << "=================================\n";
+    int menu, jumlah, total;
+    char ulang;
 
     do {
-        cout << "\nDaftar Menu Makanan:\n";
-        cout << "1. Soto  - Rp 15.000\n";
-        cout << "2. Rawon - Rp 20.000\n";
-        cout << "Pilih menu (1/2): ";
-        cin >> pilihan;
+        cout << "\n=== MINI KASIR ===\n";
+        cout << "1. Soto  - Rp15000\n";
+        cout << "2. Rawon - Rp20000\n";
+        cout << "Pilih menu: ";
+        cin >> menu;
 
-        if (pilihan == 1) {
-            cout << "Masukkan jumlah porsi Soto: ";
-            cin >> jumlah;
-            total += jumlah * 15000;
-        } else if (pilihan == 2) {
-            cout << "Masukkan jumlah porsi Rawon: ";
-            cin >> jumlah;
-            total += jumlah * 20000;
-        } else {
-            cout << "Pilihan tidak valid!\n";
+        cout << "Jumlah: ";
+        cin >> jumlah;
+
+        if (menu == 1)
+            total = 15000 * jumlah;
+        else if (menu == 2)
+            total = 20000 * jumlah;
+        else {
+            cout << "Menu tidak tersedia!\n";
+            continue;
         }
 
-        cout << "Tambah pesanan lagi? (y/n): ";
-        cin >> lanjut;
-    } while (lanjut == 'y' || lanjut == 'Y');
+        cout << "Total bayar: Rp" << total << endl;
+        cout << "Transaksi lagi? (y/n): ";
+        cin >> ulang;
 
-    cout << "\n---------------------------------\n";
-    cout << "Total Belanja       : Rp " << total << endl;
-    cout << "Masukkan Uang Bayar : Rp ";
-    cin >> bayar;
+    } while (ulang == 'y' || ulang == 'Y');
 
-    if (bayar >= total) {
-        kembalian = bayar - total;
-        cout << "Kembalian           : Rp " << kembalian << endl;
-        cout << "Terima kasih telah berbelanja!\n";
-    } else {
-        cout << "Uang Anda kurang! Transaksi dibatalkan.\n";
-    }
-    cout << "=================================\n";
-
+    cout << "Terima kasih!\n";
     return 0;
 }
